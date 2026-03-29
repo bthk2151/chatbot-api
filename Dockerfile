@@ -4,9 +4,11 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci --omit=dev
+RUN npm ci
 
 COPY . .
+
+RUN npm run build && npm prune --omit=dev
 
 ENV PORT=8080
 
